@@ -18,7 +18,13 @@ else
 
 document.querySelector("header").innerHTML = `
 
-                <h3>C'est la navbarre</h3>`;
+                <h3>C'est la navbarre</h3>
+                <ul>
+                  <li><a href="`+ urlindex +`index.html">Accueil</a></li>
+                  <li><a href="`+ urlbis +`map.html">Map</a></li>
+                  <li><a href="`+ urlbis +`video.html">Vidéo</a></li>
+                  <li>Oh le bad je suis en pleine redescente</li>
+                </ul>`;
 
 document.querySelector("footer").innerHTML = `
 
