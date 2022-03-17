@@ -18,14 +18,23 @@ else
 
 document.querySelector("header").innerHTML = `
 
-                <h3>C'est la navbarre</h3>`;
+                <h3>C'est la navbarre</h3>
+                
+                `;
 
 document.querySelector("footer").innerHTML = `
 
-                <h3>C'est le footer</h3>
-                    <ul>
-                    <li>Tikiwinki</li>
-                    <li>Lala</li>
-                    <li>Poooo</li>
-                    <li>Oh le bad je suis en pleine redescente</li>
-                </ul>`;
+                <div>
+                    <h3>ETAT-MAJOR</h3>
+                    <p>24 rue René Camphin - CS 60068</p>
+                    <h3>Horaires d'ouverture</h3>
+                </div>
+                <button onclick="topFunction()" id="upBtn" title="Retour au haut de la page">Retour Haut de page</button>
+                
+                `;
+
+//Bouton remonte en haut de page
+function topFunction(){
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
