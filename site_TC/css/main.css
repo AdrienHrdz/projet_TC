@@ -1,49 +1,84 @@
+
+/*Footer*/
 footer {
 
-    height: 150px;
-    width: 99%;
+    
+    width: 100%;
 
     position: fixed;
-    left: 0.5%;
-    bottom: 0;
+    left: 0%;
+    bottom: 0%;
 
-    margin-top: 5%;
+    margin-top: 2%;
+    margin-bottom: 0%;
     list-style-type: none;
     overflow: hidden;
     background-color: rgb(172, 6, 6);
 }
 
 footer h3 {
-    float: center;
-    /*display: block;*/
+    display: block;
     color: rgb(245, 245, 245);
-    text-align: center;
+    text-align: left;
     text-decoration: none;
 }
 
-footer div {
-    float: left;
+footer p {
     display: block;
-    color: rgb(224, 178, 178);
-    text-align: center;
+    color: rgb(245, 245, 245);
+    text-align: left;
     text-decoration: none;
 }
+
+
+.listcadre{
+    columns: 375px;
+    position: relative;
+    left: 2%; top: 2%;
+    padding:0;
+    margin:0;
+    list-style-type:none;
+}
+
+.cadre1 {
+    position: relative;
+    left: 2%;
+}
+
+.cadre2 {
+    position: relative;
+    top: 2%;
+}
+
+/*.cadre1 {
+    position: relative;
+    left: 0%;
+    margin-left: 1% ;
+    display: block;
+}
+
+.cadre4 {
+    float : right;
+    display: block;
+}*/
 
 footer button {
-    float: right;
-    display: block;
-    background-color: rgb(224, 178, 178);
-    color: rgb(218, 77, 77);
+    /*float: right;
+    display: block;*/
+    background-color: rgb(172, 6, 6);
+    color: rgb(224, 178, 178);
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
 button:hover {
-    background-color: rgb(172, 54, 24);
-    color :rgb(252, 252, 252)
-  }
+    background-color: rgb(224, 178, 178);
+    color :rgb(172, 6, 6);
+}
 
+
+/*Header*/
 header{
     font-size: large;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
