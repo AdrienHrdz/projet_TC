@@ -44,3 +44,14 @@ button:hover {
     color :rgb(252, 252, 252)
   }
 
+header{
+    font-size: large;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+
+}
+
+.navbar {
+    display: flex;
+    justify-content: center; 
+}

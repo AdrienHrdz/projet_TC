@@ -18,9 +18,15 @@ else
 
 document.querySelector("header").innerHTML = `
 
-                <h3>C'est la navbarre</h3>
-                
-                `;
+                <section class="header" id="modelHeader">
+                <h1>Sapeurs Pompiers de France</h1>
+                <div class="grid_2">
+                    <ul class="navbar">
+                        <li><a href="`+ urlindex +`index.html">Accueil</a></li>
+                        <li><a href="`+ urlbis +`map.html">Map</a></li>
+                        <li><a href="`+ urlbis +`video.html">Vidéo</a></li>
+                    </ul>
+                </div>`;
 
 document.querySelector("footer").innerHTML = `
 
