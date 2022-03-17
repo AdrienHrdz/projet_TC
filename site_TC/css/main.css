@@ -1,28 +1,25 @@
 
-/*Footer*/
+/*Footer-------------------------------------------------------*/
 footer {
-
-    
     width: 100%;
-
     position: fixed;
     left: 0%;
     bottom: 0%;
 
-    margin-top: 2%;
-    margin-bottom: 0%;
     list-style-type: none;
     overflow: hidden;
     background-color: rgb(172, 6, 6);
 }
 
+/*Titre des parties*/
 footer h3 {
     display: block;
     color: rgb(245, 245, 245);
-    text-align: left;
+    text-align: center;
     text-decoration: none;
 }
 
+/* Texte dans les parties*/
 footer p {
     display: block;
     color: rgb(245, 245, 245);
@@ -31,54 +28,48 @@ footer p {
 }
 
 
-.listcadre{
-    columns: 375px;
-    position: relative;
-    left: 2%; top: 2%;
+
+.listcadre { /*ul*/
     padding:0;
     margin:0;
     list-style-type:none;
 }
 
-.cadre1 {
-    position: relative;
-    left: 2%;
+li {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left:2px;
+    float:left; 
+    text-align: center;
+}
+.listcadre li {
+    display:block;
+    float:left;   
+    width:360px;
+    padding:6px;
+    border:2px solid;
+    border-color:#e97575;
 }
 
-.cadre2 {
-    position: relative;
-    top: 2%;
-}
-
-/*.cadre1 {
-    position: relative;
-    left: 0%;
-    margin-left: 1% ;
-    display: block;
-}
-
-.cadre4 {
-    float : right;
-    display: block;
-}*/
-
+/*Bouton Retour en haut de page-----*/
 footer button {
-    /*float: right;
-    display: block;*/
     background-color: rgb(172, 6, 6);
     color: rgb(224, 178, 178);
-    text-align: center;
+    text-align: right;
     padding: 14px 16px;
     text-decoration: none;
 }
 
-button:hover {
+button:hover {  /*quand la souris passe au dessus du bouton*/
     background-color: rgb(224, 178, 178);
     color :rgb(172, 6, 6);
 }
 
 
-/*Header*/
+
+
+
+/*Header-------------------------------------------------------------*/
 header{
     font-size: large;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
