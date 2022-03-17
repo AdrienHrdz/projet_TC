@@ -1,0 +1,30 @@
+.map{
+    width: 80%;
+    height: 600px;
+    background: #f0f0f0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.legend{
+    width: 40%;
+    margin-top: 20px;
+    margin-left: 150px;
+    background: #f0f0f0;
+    
+}
+
+.list_legend{
+    text-align: left;
+    columns: 200px;
+}
+
+.center{
+    text-align: center;
+}
+
+.element1 ::before{
+    color: #e92424
+}
+
+
