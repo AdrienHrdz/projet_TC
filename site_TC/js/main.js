@@ -19,13 +19,14 @@ else
 document.querySelector("header").innerHTML = `
 
                 <section class="header" id="modelHeader">
-                <h1>Sapeurs pompiers de France</h1>
-                <ul>
-                  <li><a href="`+ urlindex +`index.html">Accueil</a></li>
-                  <li><a href="`+ urlbis +`map.html">Map</a></li>
-                  <li><a href="`+ urlbis +`video.html">Vidéo</a></li>
-                  <li>Oh le bad je suis en pleine redescente</li>
-                </ul>`;
+                <h1>Sapeurs Pompiers de France</h1>
+                <div class="grid_2">
+                    <ul class="navbar">
+                        <li><a href="`+ urlindex +`index.html">Accueil</a></li>
+                        <li><a href="`+ urlbis +`map.html">Map</a></li>
+                        <li><a href="`+ urlbis +`video.html">Vidéo</a></li>
+                    </ul>
+                </div>`;
 
 document.querySelector("footer").innerHTML = `
 
