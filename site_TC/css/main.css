@@ -83,10 +83,33 @@ header{
     font-size: large;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     text-align: center;
-
+    margin-top: 0%;
+    list-style-type: none;
+    overflow: hidden;
+    background-color: rgb(172, 6, 6);
+    color:white;
 }
 
-.navbar {
-    display: flex;
-    justify-content: center; 
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(172, 6, 6);
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: rgb(172, 54, 24);
 }
