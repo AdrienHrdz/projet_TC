@@ -1,0 +1,34 @@
+/*Body-------------------------------------------------------*/
+
+.container {
+    text-align: center;
+    padding: 2.5%; 
+    width: 50%;
+    position: fixed;
+    left: 22%;
+}
+
+
+.accueil {
+    background-color: #e21818;
+    padding: 1%;
+    margin-bottom: 2%;
+    border:2px solid;
+    border-color:#e97575;
+}
+
+.map {
+    background-color: #ff822e;
+    padding: 1%;
+    margin-bottom: 2%;
+}
+
+.video {
+    background-color: #ffd92e;
+    padding: 1%;
+    margin-bottom: 2%;
+}
+
+a {
+    color: white;
+}
