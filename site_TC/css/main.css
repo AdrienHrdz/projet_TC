@@ -61,6 +61,34 @@ footer {
 }
 
 /*Titre des parties*/
+
+.listcadre li {
+    display:block;
+    float:left; 
+    margin-top: 0.1%; 
+    margin-right: 0.5%; 
+    width:24%;
+    border:2px solid;
+    border-color:#e97575;
+    height: 100%;
+}
+
+.cl4 {
+    padding-bottom: 0.8%;
+}
+
+.cl3 {
+    padding-bottom: 2%;
+}
+
+.cl2 {
+    padding-bottom: 2.9%;
+}
+
+.cl1 {
+    padding-bottom: 2.9%;
+}
+
 footer h4 {
     display: block;
     color: rgb(245, 245, 245);
@@ -74,28 +102,10 @@ footer p {
     color: rgb(245, 245, 245);
     text-align: left;
     text-decoration: none;
+    margin-left: 3%;
 }
 
-.listcadre { /*ul*/
-    padding:0;
-    margin:0;
-    list-style-type:none;
-}
 
-li {
-    margin-top: 0.2%;
-    margin-bottom: 0.2%;
-    margin-left:2px;
-    float:left; 
-    text-align: center;
-}
-.listcadre li {
-    display:block;
-    float:left;   
-    width:24.5%;
-    border:2px solid;
-    border-color:#e97575;
-}
 
 /*Bouton Retour en haut de page-----*/
 footer button {
