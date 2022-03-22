@@ -1,15 +1,9 @@
+
 html, body {
+    margin: 0px;
     height: 100%;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-}
-
-.container{
-    flex: 1 0 auto;
-}
 /*Header-------------------------------------------------------------*/
 header{
     font-size: large;
@@ -46,21 +40,21 @@ li a:hover {
     background-color: rgb(172, 54, 24);
 }
 
+/*Container-------------------------------------------------------*/
+#container{
+    text-align: center;
+}
 
 /*Footer-------------------------------------------------------*/
 footer {
     width: 100%;
-    position: fixed;
     left: 0%;
-    bottom: 0%;
+    bottom: 0px;
 
     list-style-type: none;
     overflow: hidden;
     background-color: rgb(172, 6, 6);
-
-    flex-shrink: 0;
-    
-    
+    flex-shrink: 0%;
 }
 
 /*Titre des parties*/
