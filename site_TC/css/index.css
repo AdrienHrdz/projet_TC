@@ -3,7 +3,7 @@
 .container {
     text-align: center;
     padding: 2.5%; 
-    width: 50%;
+    width: 40%;
     position: fixed;
     left: 22%;
 }
@@ -13,20 +13,25 @@
     background-color: #e21818;
     padding: 1%;
     margin-bottom: 2%;
-    border:2px solid;
-    border-color:#e97575;
+    margin-top: 2%;
+    margin-left: 30%;
+    margin-right: 30%;
 }
 
 .map {
     background-color: #ff822e;
     padding: 1%;
     margin-bottom: 2%;
+    margin-left: 30%;
+    margin-right: 30%;
 }
 
 .video {
     background-color: #ffd92e;
     padding: 1%;
     margin-bottom: 2%;
+    margin-left: 30%;
+    margin-right: 30%;
 }
 
 a {
