@@ -33,17 +33,17 @@ document.querySelector("footer").innerHTML = `
             <div class=cadres>
                 <ul class=listcadre>
                     <li class=cadre1>
-                        <h3>ETAT-MAJOR</h3> 
+                        <h4>Etat-Major</h4> 
                     </li>
 
                     <li>
-                        <h3>Horaires d'ouverture</h3>
+                        <h4>Horaires d'ouverture</h4>
                 
                     </li>
             
                     <li>
                        
-                        <h3>Contactez-nous</h3>
+                        <h4>Contactez-nous</h4>
                         
                     </li>
 
