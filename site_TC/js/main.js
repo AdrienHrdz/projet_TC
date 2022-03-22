@@ -4,6 +4,8 @@ var urlindex = ".";
 var path = window.location.pathname;
 var page = path.split("/").pop();
 
+var name_page = page.split(".");
+
 if(page != "index.html")
 {
     urlindex = "../";
@@ -25,6 +27,8 @@ document.querySelector("header").innerHTML = `
                         <li><a href="`+ urlindex +`index.html">Accueil</a></li>
                         <li><a href="`+ urlbis +`map.html">Map</a></li>
                         <li><a href="`+ urlbis +`video.html">Vidéo</a></li>
+                        <li class="right"><a> Page en cours:  ` + name_page[0] +` </a></li>
+                        
                     </ul>
                 </div>`;
 
