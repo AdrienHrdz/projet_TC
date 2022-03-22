@@ -30,25 +30,24 @@ document.querySelector("header").innerHTML = `
                         <li class="right"><a> Page en cours:  ` + name_page[0] +` </a></li>
                         
                     </ul>
-                </div>`;
+                </div>`
+;
 
 document.querySelector("footer").innerHTML = `
             <div class=cadres>
                 <ul class=listcadre>
                     <li class=cadre1>
-                        <h3>ETAT-MAJOR</h3> 
-                        <p>24 rue René Camphin - CS 60068 <br> 38602 FONTAINE cedex</p>
+                        <h4>Etat-Major</h4> 
                     </li>
 
                     <li>
-                        <h3>Horaires d'ouverture</h3>
-                        <p>Du lundi au vendredi : <br><br>de 9h à 12h <br>et de 14h à 17h</p>
+                        <h4>Horaires d'ouverture</h4>
                 
                     </li>
             
                     <li>
                        
-                        <h3>Contactez-nous</h3>
+                        <h4>Contactez-nous</h4>
                         
                     </li>
 
@@ -59,10 +58,12 @@ document.querySelector("footer").innerHTML = `
                     </li>
                 </ul>
             </div>
-            `;
+            `
+;
 
 //Bouton remonte en haut de page
 function topFunction(){
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 }
+

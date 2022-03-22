@@ -37,3 +37,47 @@
 a {
     color: white;
 }
+
+
+#bouton_accueil {
+    background-color: #e21818;
+    color: rgb(247, 242, 242);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    width: 90%;
+}
+
+#bouton_accueil:hover {  /*quand la souris passe au dessus du bouton*/
+    background-color: #e03333;
+    color :rgb(19, 18, 18);
+}
+
+#bouton_map {
+    background-color: #ff822e;
+    color: rgb(247, 242, 242);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    width: 90%;
+}
+
+#bouton_map:hover {  /*quand la souris passe au dessus du bouton*/
+    background-color: #ff9956;
+    color :rgb(19, 18, 18);
+}
+
+#bouton_video {
+    background-color: #ffd92e;
+    color: rgb(247, 242, 242);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    width: 90%;
+}
+
+#bouton_video:hover {  /*quand la souris passe au dessus du bouton*/
+    background-color: #fce375;
+    color :rgb(19, 18, 18);
+}
+
