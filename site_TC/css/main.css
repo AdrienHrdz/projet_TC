@@ -45,6 +45,7 @@ footer {
     list-style-type: none;
     overflow: hidden;
     background-color: rgb(172, 6, 6);
+    flex-shrink: 0%;
     
 }
 
