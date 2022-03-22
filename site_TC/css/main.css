@@ -1,3 +1,15 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.container{
+    flex: 1 0 auto;
+}
 /*Header-------------------------------------------------------------*/
 header{
     font-size: large;
@@ -45,7 +57,9 @@ footer {
     list-style-type: none;
     overflow: hidden;
     background-color: rgb(172, 6, 6);
-    flex-shrink: 0%;
+
+    flex-shrink: 0;
+    
     
 }
 
@@ -100,7 +114,4 @@ button:hover {  /*quand la souris passe au dessus du bouton*/
     background-color: rgb(224, 178, 178);
     color :rgb(172, 6, 6);
 }
-
-
-
 
