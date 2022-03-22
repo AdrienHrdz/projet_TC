@@ -1,15 +1,3 @@
-html, body {
-    height: 100%;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-}
-
-.container{
-    flex: 1 0 auto;
-}
 
 .map{
     width: 80%;
@@ -44,9 +32,4 @@ body {
 .container {
     margin-bottom: 20%;
     margin-top: 10%;
-}
-
-
-.push {
-    height: 50px;
 }
