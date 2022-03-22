@@ -19,6 +19,7 @@ header{
     overflow: hidden;
     background-color: rgb(172, 6, 6);
     color:white;
+    height: 20%;
 }
 
 ul {
@@ -50,12 +51,14 @@ li a:hover {
 footer {
     width: 100%;
     left: 0%;
-    bottom: 0px;
+    bottom: 0%;
 
     list-style-type: none;
     overflow: hidden;
     background-color: rgb(172, 6, 6);
     flex-shrink: 0%;
+
+    height: 1%;
 }
 
 /*Titre des parties*/
