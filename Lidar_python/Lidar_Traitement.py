@@ -17,7 +17,7 @@ gamma = 0.4 # Difference accepté pour regrouper 2 lignes
 x=np.array([])
 y=np.array([])
 #A.append(x[1]) B.append(x[2])
-with open('RPLIDAR.txt','r') as fr: #Ouvre le fichier texte
+with open('Lidar_python/RPLIDAR.txt','r') as fr: #Ouvre le fichier texte
     lines = fr.readlines()
     ptr = 1
     with open('RPLIDAR2.txt','w') as fw:
@@ -32,7 +32,6 @@ with open('RPLIDAR.txt','r') as fr: #Ouvre le fichier texte
     fr.close()
 A=np.concatenate([[x], [y]], axis=0)
 #Matrice ligne 1 : angle / ligne 2 : distance
-#print(A)
 
 # Changement de bases
 
@@ -49,8 +48,7 @@ for (dist,angle) in zip(A[0,:],A[1,:]) :
     X=np.append(X,b1)
     Y=np.append(Y,b2)
 
-points = np.concatenate([[X], [Y]], axis=0)
-print(points)
+#points = np.concatenate([[X], [Y]], axis=0)
 
 #Traçage de lignes
 k = 1
@@ -58,29 +56,28 @@ lines = np.array([])
 coeffsDir = np.array([])
 
 while(k<len(X)-1) :
-   flag = True
-   line = np.array([])
+    flag = True
+    line = np.array([0, 0])
    
-   while(flag and k<len(X)-1) :
+    while(flag and k < len(X)-1) : 
+        (Cx, Cy) = circle.circle(X[k], Y[k], d)
+        plt.plot(Cx, Cy)
+            
+        if((X[k+1] - X[k])**2 + (Y[k+1] - Y[k])**2 < d**2) :
+            line = np.concatenate((line, [ X[k+1], Y[k+1] ]), axis=0)
+            print(line, "\n", line.shape)
+            
+                
+        else :
+            flag = False
+            
+        k += 1
+  
+    if(len(line) > n) :
+       m = (line[-1, 1] - line[0, 1])/(line[-1, 0] - line[0, 0])
+       coeffsDir = np.concatenate((coeffsDir, m));                            
        
-    (Cx, Cy) = circle.circle(X[k], Y[k], d)
-    #plot(Cy, Cx); hold on;
-       
-    if((X[k+1] - X[k])^2 + (Y[k+1] - Y[k])^2 < d^2) :
-        #line = cat(1, line, [X(k+1), Y(k+1)])
-        print("ligne à faire marcher 1")
-           
-    else :
-        flag = false
-       
-    k = k + 1
-
-#   
-#   if(isempty(line) == false) :
-#       m = (line(end, 2) - line(1, 2))/(line(end, 1) - line(1, 1)); % Coeff directeur de la ligne en cours
-#       coeffsDir = cat(1, coeffsDir, m);                            % Ajout du coeff dans la matrice lines
-#       
-#       lines = cat(1, lines, [line(1,:); line(end,:)]); % Ajout des coors des 2 point de la ligne dans la matrice lines
+       lines = np.concatenate(( lines, [line[0,:], line[-1,:]] )); 
 
 
 

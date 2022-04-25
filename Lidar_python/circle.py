@@ -1,5 +1,6 @@
 import numpy as np
 from math import cos,sin,pi
+import matplotlib.pyplot as plt
 
 #Code matlab
 #function [Cx, Cy] = circle(Xc, Yc, R)
@@ -12,13 +13,9 @@ from math import cos,sin,pi
 
 def circle(Xc,Yc,R):
     theta = np.linspace(0, 2*pi, 100)
-    Cx =np.array([])
-    Cy =np.array([])
-    Cx = np.append(Cx,Xc+R*cos(theta)) 
-    Cy = np.append(Cy,Yc+R*sin(theta)) 
-    
-    C =np.array([])
-    C = np.concatenate([[Cx], [Cy]], axis=0)
-    return C
+    Cx = Xc + R*np.cos(theta)
+    Cy = Yc + R*np.sin(theta)
+   
+    return Cx, Cy
 
 
