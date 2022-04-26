@@ -57,14 +57,14 @@ coeffsDir = np.array([])
 
 while(k<len(X)-1) :
     flag = True
-    line = np.array([0, 0])
+    line = np.array([])
    
     while(flag and k < len(X)-1) : 
         (Cx, Cy) = circle.circle(X[k], Y[k], d)
         plt.plot(Cx, Cy)
             
         if((X[k+1] - X[k])**2 + (Y[k+1] - Y[k])**2 < d**2) :
-            line = np.concatenate((line, [ X[k+1], Y[k+1] ]), axis=0)
+            np.append(line, [X[k+1], Y[k+1]], axis=0)
             print(line, "\n", line.shape)
             
                 
