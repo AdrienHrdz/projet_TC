@@ -6,7 +6,7 @@ import circle as circle
 # Variables globales
 sigma = 0.01 # Largeur d'une ligne
 d = 0.01 # Rayon max dans lequel se trouvent 2 points d'une même ligne
-n = 10 # Nbs de points minimum dans une ligne
+n = 5 # Nbs de points minimum dans une ligne
 gamma = 0.4 # Difference accepté pour regrouper 2 lignes
 
 # Récupération des données
@@ -18,15 +18,15 @@ x=np.array([])
 y=np.array([])
 #A.append(x[1]) B.append(x[2])
 with open('Lidar_python/RPLIDAR.txt','r') as fr: #Ouvre le fichier texte
-    lines = fr.readlines()
+    linesTxt = fr.readlines()
     ptr = 1
     with open('RPLIDAR2.txt','w') as fw:
-        for line in lines: #enlève les 3 premieres lignes du fichier et rempli dans RPLIDAR2.txt
+        for lineTxt in linesTxt: #enlève les 3 premieres lignes du fichier et rempli dans RPLIDAR2.txt
             if (ptr !=1 and ptr != 2 and ptr != 3):
-                l=line.split(' ')
+                l=lineTxt.split(' ')
                 x=np.append(x,l[0]) 
                 y=np.append(y,l[1])
-                fw.write(line)
+                fw.write(lineTxt)
             ptr += 1
         fw.close()
     fr.close()
@@ -51,33 +51,35 @@ for (dist,angle) in zip(A[0,:],A[1,:]) :
 #points = np.concatenate([[X], [Y]], axis=0)
 
 #Traçage de lignes
-k = 1
-lines = np.array([])
-coeffsDir = np.array([])
+k = 0
+lines = np.empty((1, 2), int)
+coeffsDir = np.empty((1, 1), int)
 
 while(k<len(X)-1) :
     flag = True
-    line = np.array([])
+    line = np.empty((1, 2), int)
+    
    
     while(flag and k < len(X)-1) : 
         (Cx, Cy) = circle.circle(X[k], Y[k], d)
-        plt.plot(Cx, Cy)
             
         if((X[k+1] - X[k])**2 + (Y[k+1] - Y[k])**2 < d**2) :
-            np.append(line, [X[k+1], Y[k+1]], axis=0)
-            print(line, "\n", line.shape)
-            
+            line = np.append(line, [[ X[k+1], Y[k+1] ]], axis=0)
                 
         else :
             flag = False
             
         k += 1
   
-    if(len(line) > n) :
-       m = (line[-1, 1] - line[0, 1])/(line[-1, 0] - line[0, 0])
-       coeffsDir = np.concatenate((coeffsDir, m));                            
-       
-       lines = np.concatenate(( lines, [line[0,:], line[-1,:]] )); 
+    if(len(line) > n+1) :
+        
+        line = np.delete(line, 0, axis=0)
+        
+        m = (line[-1, 1] - line[0, 1])/(line[-1, 0] - line[0, 0])
+        coeffsDir = np.append(coeffsDir, [[m]], axis=0) 
+        
+                            
+        lines = np.append(lines, [ line[0,:], line[-1,:] ], axis=0);         
 
 
 
@@ -94,10 +96,12 @@ while(k<len(X)-1) :
 #%    
 #% end
 #
+
 #Affichage
-#for i = 0:len(lines)/2 - 1
-#    plot(lines(1+2*i:2*(i+1),1), lines(1+2*i:2*(i+1), 2)); hold on;
-#   
-#end
-#
+lines = np.delete(lines, 0, axis=0)
+
+for i in range(int(len(lines)/2)):
+    plt.plot([ lines[2*i, 0], lines[2*i+1, 0] ], [ lines[2*i, 1], lines[2*i+1, 1] ])
+
+plt.show()
 #status=fclose(fid); #ferme fichier
