@@ -1,4 +1,3 @@
-
 .map{
     width: 80%;
     height: 600px;
@@ -33,10 +32,4 @@
 .container {
     margin-bottom: 20%;
     margin-top: 10%;
-}
-
-section article {
-    width: 20%;
-    float: left;
-    background-color: rgb(192, 66, 169);
 }

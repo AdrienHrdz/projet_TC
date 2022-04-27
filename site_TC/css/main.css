@@ -120,3 +120,10 @@ button:hover {  /*quand la souris passe au dessus du bouton*/
     background-color: rgb(224, 178, 178);
     color :rgb(172, 6, 6);
 }
+
+
+section article {
+    width: 33.3%;
+    float: left;
+    background-color: rgb(192, 66, 169);
+}

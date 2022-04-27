@@ -1,5 +1,7 @@
 //JSON
-
+var header = document.querySelector("header");
+//var section = document.querySelector("section");
+var section = document.querySelector("map");
 //lien du json
 var requestURL = "testjson.json"; //peut mettre un lien github : 'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json';
 var request = new XMLHttpRequest();
