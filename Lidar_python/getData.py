@@ -5,7 +5,7 @@ from rplidar import RPLidar,RPLidarException
 import matplotlib.pyplot as plt
 from math import cos,sin,pi
 import time
-PORT_NAME = 'COM11'
+PORT_NAME = '10c4:ea60'
 
 def run(path):
     lidar = RPLidar(PORT_NAME)

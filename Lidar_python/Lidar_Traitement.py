@@ -10,7 +10,7 @@ import circle as circle
 
 def getData(filePath):
     '''
-    Récupére les données envoyés par le Lidar
+    Récupére les données envoyés par le Lidar (mettre un chemin absolu pour le chemin du fichier)
     '''
 
     x = np.array([])
@@ -19,7 +19,7 @@ def getData(filePath):
     with open(filePath, 'r') as fr:       #Ouvre le fichier texte
         linesTxt = fr.readlines()
         ptr = 1
-        with open('Lidar_python/RPLIDAR2.txt','w') as fw:
+        with open('./RPLIDAR2.txt','w') as fw:
             for lineTxt in linesTxt:                        # Enlève les 3 premieres lignes du fichier et rempli dans RPLIDAR2.txt
                 if (ptr !=1 and ptr != 2 and ptr != 3):
                     l=lineTxt.split(' ')
@@ -39,7 +39,6 @@ def changeBase(A):
     '''
     Passage des données en une base (distance, angle) en une base (x, y)
     '''
-    #A = getData()
     X = np.array([])
     Y = np.array([])
     for (dist,angle) in zip(A[0,:],A[1,:]) :
@@ -53,16 +52,14 @@ def changeBase(A):
     return X, Y
 
 
-def createLines(X, Y):
+def createLines(X, Y, n):
     '''
-    Crée les lignes à partir du nuage de point contenu dans X, Y
+    Crée les lignes à partir du nuage de point contenu dans X, Y et ne prend en compte que les lignes ayant au moins n points
     '''
-    #X = changeBase()[0]
-    #Y = changeBase()[1]
 
     k = 0
     d = 0.01        # Rayon max dans lequel se trouvent 2 points d'une même ligne
-    n = 5           # Nbs de points minimum dans une ligne
+    
 
     lines = np.empty((1, 2), int)
     coeffsDir = np.empty((1, 1), int)
@@ -93,7 +90,7 @@ def createLines(X, Y):
                                 
             lines = np.append(lines, [ line[0,:], line[-1,:] ], axis=0)         
 
-    return lines
+    return lines, coeffsDir
 
 
 #% for i = 2:2:len(lines)
@@ -108,7 +105,32 @@ def createLines(X, Y):
 #%     end
 #%    
 #% end
-#
+
+def reshapeLines(lines, coeffsDir, gamma):
+    '''
+    Relie les lignes si leur coeffs directeur et leur position est similaire à gamma près
+    '''
+    j = 0
+    flag = True
+
+    lines = np.delete(lines, 0, axis=0)
+
+    for i in range(0, len(lines), 2):
+        while(flag):
+            if(i != j and abs(coeffsDir(i/2) - coeffsDir(j/2)) < gamma
+            and abs(lines(i, 0) - lines(j, 0)) < gamma
+            and (lines(i, 1) - lines(j, 1)) < gamma):
+
+                lines = np.delete(lines, [i, i+1], axis=0)
+
+                flag = False
+                j = 0
+
+            else:
+                j += 2
+
+    return lines
+
 
 
 def printLines(lines):
@@ -126,9 +148,9 @@ def printLines(lines):
 ## Tests ##
 A = getData('Lidar_python/RPLIDAR.txt')
 
-X = changeBase(A)[0]
-Y = changeBase(A)[1]
+X, Y = changeBase(A)
 
-lines = createLines(X, Y)
+lines, coeffsDir = createLines(X, Y, 5)
+linesReshape = reshapeLines(lines, coeffsDir, 0.02)
 
-printLines(lines)
+printLines(linesReshape)
