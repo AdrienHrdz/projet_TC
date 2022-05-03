@@ -3,14 +3,12 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from math import cos,sin,pi
-import circle as circle
-
 
 ## Définition des fonctions ##
 
 def getData(filePath):
     '''
-    Récupére les données envoyés par le Lidar
+    Récupére les données envoyés par le Lidar (mettre un chemin absolu pour le chemin du fichier)
     '''
 
     x = np.array([])
@@ -19,7 +17,7 @@ def getData(filePath):
     with open(filePath, 'r') as fr:       #Ouvre le fichier texte
         linesTxt = fr.readlines()
         ptr = 1
-        with open('Lidar_python/RPLIDAR2.txt','w') as fw:
+        with open('./RPLIDAR2.txt','w') as fw:
             for lineTxt in linesTxt:                        # Enlève les 3 premieres lignes du fichier et rempli dans RPLIDAR2.txt
                 if (ptr !=1 and ptr != 2 and ptr != 3):
                     l=lineTxt.split(' ')
@@ -39,7 +37,6 @@ def changeBase(A):
     '''
     Passage des données en une base (distance, angle) en une base (x, y)
     '''
-    #A = getData()
     X = np.array([])
     Y = np.array([])
     for (dist,angle) in zip(A[0,:],A[1,:]) :
@@ -53,16 +50,14 @@ def changeBase(A):
     return X, Y
 
 
-def createLines(X, Y):
+def createLines(X, Y, n):
     '''
-    Crée les lignes à partir du nuage de point contenu dans X, Y
+    Crée les lignes à partir du nuage de point contenu dans X, Y et ne prend en compte que les lignes ayant au moins n points
     '''
-    #X = changeBase()[0]
-    #Y = changeBase()[1]
 
     k = 0
     d = 0.01        # Rayon max dans lequel se trouvent 2 points d'une même ligne
-    n = 5           # Nbs de points minimum dans une ligne
+    
 
     lines = np.empty((1, 2), int)
     coeffsDir = np.empty((1, 1), int)
@@ -93,7 +88,8 @@ def createLines(X, Y):
                                 
             lines = np.append(lines, [ line[0,:], line[-1,:] ], axis=0)         
 
-    return lines
+    lines = np.delete(lines, 0, axis=0)
+    return lines, coeffsDir
 
 
 #% for i = 2:2:len(lines)
@@ -108,27 +104,64 @@ def createLines(X, Y):
 #%     end
 #%    
 #% end
-#
+
+def reshapeLines(lines, coeffsDir, gamma):
+    '''
+    Relie les lignes si leur coeffs directeur et leur position sont similaire à gamma près
+    '''
+    linesReshape = np.empty((1, 2), int)
+    coeffsDir = np.delete(coeffsDir, 0, axis=0)
+
+    for i in range(0, len(lines) - 2, 2):
+
+        linesReshape = np.append(linesReshape, [ lines[i,:] ], axis = 0)
+
+        if(abs(coeffsDir[int(i/2)] - coeffsDir[int(i/2 + 1)]) < gamma
+        and abs(lines[i, 0] - lines[i+2, 0]) < gamma
+        and (lines[i, 1] - lines[i+2, 1]) < gamma):
+
+            linesReshape = np.append(linesReshape, [ lines[i+2,:] ], axis = 0)
+
+        else:
+
+            linesReshape = np.append(linesReshape, [ lines[i+1,:] ], axis = 0)
+                
+                
+    linesReshape = np.delete(linesReshape, 0, axis=0)
+    print(np.size(linesReshape))
+    return linesReshape
+
 
 
 def printLines(lines):
     '''
     Affiche la carte sous forme de lignes
     '''
-    lines = np.delete(lines, 0, axis=0)
 
     for i in range(int(len(lines)/2)):
         plt.plot([ lines[2*i, 0], lines[2*i+1, 0] ], [ lines[2*i, 1], lines[2*i+1, 1] ])
 
     plt.draw()
+    
 
 
 ## Tests ##
 A = getData('Lidar_python/RPLIDAR.txt')
 
-X = changeBase(A)[0]
-Y = changeBase(A)[1]
+X, Y = changeBase(A)
 
-lines = createLines(X, Y)
 
+lines  = createLines(X, Y, 5)[0]
+coeffsDir = createLines(X, Y, 5)[1]
+linesReshape = reshapeLines(lines, coeffsDir, 0.07)
+
+plt.figure(1)
 printLines(lines)
+
+plt.figure(2)
+printLines(linesReshape)
+#plt.scatter(X, Y)
+#plt.draw()
+#plt.show()
+
+plt.show()
