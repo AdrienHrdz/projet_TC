@@ -4,7 +4,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from math import cos,sin,pi
 
-
 ## Définition des fonctions ##
 
 def getData(filePath):
@@ -88,6 +87,7 @@ def createLines(X, Y, n):
                                 
             lines = np.append(lines, [ line[0,:], line[-1,:] ], axis=0)         
 
+    lines = np.delete(lines, 0, axis=0)
     return lines, coeffsDir
 
 
@@ -106,28 +106,29 @@ def createLines(X, Y, n):
 
 def reshapeLines(lines, coeffsDir, gamma):
     '''
-    Relie les lignes si leur coeffs directeur et leur position est similaire à gamma près
+    Relie les lignes si leur coeffs directeur et leur position sont similaire à gamma près
     '''
-    j = 0
-    flag = True
+    linesReshape = np.empty((1, 2), int)
+    coeffsDir = np.delete(coeffsDir, 0, axis=0)
 
-    lines = np.delete(lines, 0, axis=0)
+    for i in range(0, len(lines) - 2, 2):
 
-    for i in range(0, len(lines), 2):
-        while(flag):
-            if(i != j and abs(coeffsDir(i/2) - coeffsDir(j/2)) < gamma
-            and abs(lines(i, 0) - lines(j, 0)) < gamma
-            and (lines(i, 1) - lines(j, 1)) < gamma):
+        linesReshape = np.append(linesReshape, [ lines[i,:] ], axis = 0)
 
-                lines = np.delete(lines, [i, i+1], axis=0)
+        if(abs(coeffsDir[int(i/2)] - coeffsDir[int(i/2 + 1)]) < gamma
+        and abs(lines[i, 0] - lines[i+2, 0]) < gamma
+        and (lines[i, 1] - lines[i+2, 1]) < gamma):
 
-                flag = False
-                j = 0
+            linesReshape = np.append(linesReshape, [ lines[i+2,:] ], axis = 0)
 
-            else:
-                j += 2
+        else:
 
-    return lines
+            linesReshape = np.append(linesReshape, [ lines[i+1,:] ], axis = 0)
+                
+                
+    linesReshape = np.delete(linesReshape, 0, axis=0)
+    print(np.size(linesReshape))
+    return linesReshape
 
 
 
@@ -135,12 +136,12 @@ def printLines(lines):
     '''
     Affiche la carte sous forme de lignes
     '''
-    lines = np.delete(lines, 0, axis=0)
 
     for i in range(int(len(lines)/2)):
         plt.plot([ lines[2*i, 0], lines[2*i+1, 0] ], [ lines[2*i, 1], lines[2*i+1, 1] ])
 
     plt.draw()
+    
 
 
 ## Tests ##
@@ -148,7 +149,18 @@ A = getData('Lidar_python/RPLIDAR.txt')
 
 X, Y = changeBase(A)
 
-lines, coeffsDir = createLines(X, Y, 5)
-linesReshape = reshapeLines(lines, coeffsDir, 0.02)
 
+lines  = createLines(X, Y, 5)[0]
+coeffsDir = createLines(X, Y, 5)[1]
+linesReshape = reshapeLines(lines, coeffsDir, 0.07)
+
+plt.figure(1)
+printLines(lines)
+
+plt.figure(2)
 printLines(linesReshape)
+#plt.scatter(X, Y)
+#plt.draw()
+#plt.show()
+
+plt.show()
