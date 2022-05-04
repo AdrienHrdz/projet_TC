@@ -1,4 +1,6 @@
-filename = "./docPi/recolteDonneesCapteur8051/test.txt"
+import time
+
+filename = "./projet_TC/raspberryPi/recolteDonneesCapteur8051/test.txt"
 
 cpt = 0
 while cpt <= 10:
@@ -10,4 +12,6 @@ while cpt <= 10:
     file.truncate()
 
     file.close()
+
+    time.sleep(1)
     cpt += 1
