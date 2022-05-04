@@ -68,7 +68,6 @@ def createLines(X, Y, n):
         
     
         while(flag and k < len(X)-1) : 
-            #(Cx, Cy) = circle.circle(X[k], Y[k], d)
                 
             if((X[k+1] - X[k])**2 + (Y[k+1] - Y[k])**2 < d**2) :
                 line = np.append(line, [[ X[k+1], Y[k+1] ]], axis=0)
