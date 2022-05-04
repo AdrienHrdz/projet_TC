@@ -1,0 +1,12 @@
+$ pinout : affiche les noms des GPIO
+
+activation du port serial 
+
+utilisation de minicom for serial debugging
+
+
+
+
+e=tty1 root=/dev/mmcblk0p7 rootfstype=ext4 elevator=deadline fsck.repair=$
+
+
