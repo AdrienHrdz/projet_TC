@@ -138,6 +138,7 @@ def printLines(lines):
     '''
 
     for i in range(int(len(lines)/2)):
+        print(i)
         plt.plot([ lines[2*i, 0], lines[2*i+1, 0] ], [ lines[2*i, 1], lines[2*i+1, 1] ])
 
     plt.draw()
