@@ -23,7 +23,7 @@ def AddValueToDict(k, d, v, i):
     return d
 
 def ConstructionJson (lines) :
-    lines=np.array([[1,2], [3,4],[5,6],[7,8],[1,2], [3,4],[5,6],[7,8]])
+    lines=np.array([[1,6], [3,6],[5,6],[7,6],[1,2],[3,4],[5,6],[7,8]])
     print(int(len(lines)/2))
 
     dictio = {}
