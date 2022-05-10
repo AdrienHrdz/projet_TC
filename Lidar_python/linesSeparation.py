@@ -23,9 +23,8 @@ def AddValueToDict(k, d, v, i):
     return d
 
 def ConstructionJson (lines) :
-    lines=np.array([[1,6], [3,6],[5,6],[7,6],[1,2],[3,4],[5,6],[7,8]])
-    print(int(len(lines)/2))
-
+    
+    #print(int(len(lines)/2))
     dictio = {}
     for i in range(0,int(len(lines)/2)):
         clef1="Mur"+str(i)+"PointFirst"
@@ -36,3 +35,7 @@ def ConstructionJson (lines) :
 
     with open('RecupLigne.json', 'w') as mon_fichier:
         json.dump(dictio, mon_fichier)
+
+
+lines=np.array([[1,6], [3,6],[5,6],[7,6],[1,2],[3,4],[5,6],[7,8]])
+ConstructionJson(lines)
