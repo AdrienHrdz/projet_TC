@@ -5,7 +5,8 @@ from rplidar import RPLidar,RPLidarException
 import matplotlib.pyplot as plt
 from math import cos,sin,pi
 from Lidar_Traitement import getData, changeBase, createLines, printLines
-PORT_NAME = 'COM11'
+
+PORT_NAME = '/dev/ttyUSB0'
 
 
 def analyse(lidar):
@@ -20,7 +21,7 @@ def analyse(lidar):
         A = np.concatenate([[x], [y]], axis=0)
         X = changeBase(A)[0]
         Y = changeBase(A)[1]
-        lines = createLines(X, Y, 2)
+        lines = createLines(X, Y)
         printLines(lines)
 
         plt.pause(0.5)
