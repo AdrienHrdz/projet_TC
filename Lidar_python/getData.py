@@ -20,7 +20,7 @@ def analyse(lidar):
         A = np.concatenate([[x], [y]], axis=0)
         X = changeBase(A)[0]
         Y = changeBase(A)[1]
-        lines = createLines(X, Y)
+        lines = createLines(X, Y, 2)
         printLines(lines)
 
         plt.pause(0.5)

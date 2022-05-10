@@ -141,6 +141,7 @@ def printLines(lines):
         plt.plot([ lines[2*i, 0], lines[2*i+1, 0] ], [ lines[2*i, 1], lines[2*i+1, 1] ])
 
     plt.draw()
+    plt.show()
     
 
 
