@@ -27,8 +27,8 @@ def ConstructionJson (lines) :
     #print(int(len(lines)/2))
     dictio = {}
     for i in range(0,int(len(lines)/2)):
-        clef1="Mur"+str(i)+"PointFirst"
-        clef2="Mur"+str(i)+"PointFinish"
+        clef1="Mur"+str(i)+"First"
+        clef2="Mur"+str(i)+"Finish"
 
         dictio=AddValueToDict(clef1, dictio, lines[2*i].tolist(), list())
         dictio=AddValueToDict(clef2, dictio, lines[2*i+1].tolist(), list())
