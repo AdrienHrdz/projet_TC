@@ -90,20 +90,7 @@ def createLines(X, Y, n):
 
     lines = np.delete(lines, 0, axis=0)
     return lines, coeffsDir
-
-
-#% for i = 2:2:len(lines)
-#%     for j = 2:2:len(lines)
-#%        if(i ~= j && abs(coeffsDir(i/2) - coeffsDir(j/2)) < gamma ...
-#%                && abs(lines(i, 1) - lines(j, 1)) < gamma && abs(lines(i, 2) - lines(j, 2)) < gamma)
-#%            lines(i,:) = []; 
-#%            lines(i+1,:) = [];
-#% 
-#%        else
-#%        end
-#%     end
-#%    
-#% end
+    
 
 def reshapeLines(lines, coeffsDir, gamma):
     '''
@@ -160,8 +147,9 @@ printLines(lines)
 
 plt.figure(2)
 printLines(linesReshape)
-#plt.scatter(X, Y)
-#plt.draw()
-#plt.show()
+
+plt.figure(3)
+plt.scatter(X, Y)
+plt.draw()
 
 plt.show()
