@@ -10,7 +10,6 @@ PORT_NAME = 'COM11'
 
 def analyse(lidar):
     for i, scan in enumerate(lidar.iter_scans('express')):
-        #print('%d: Got %d measures' % (i, len(scan)))
         data.append([[scan[j][1] for j in range(len(scan))],[scan[j][2] for j in range(len(scan))]])
         Angle = data[i][0]
         Distance = data[i][1]
@@ -20,7 +19,7 @@ def analyse(lidar):
         A = np.concatenate([[x], [y]], axis=0)
         X = changeBase(A)[0]
         Y = changeBase(A)[1]
-        lines = createLines(X, Y, 2)
+        lines = createLines(X, Y)
         printLines(lines)
 
         plt.pause(0.5)
