@@ -21,7 +21,7 @@ def analyse(lidar):
         Y = changeBase(A)[1]
         lines = createLines(X, Y)
         printLines(lines)
-
+    
         plt.pause(0.5)
         plt.close()
 
