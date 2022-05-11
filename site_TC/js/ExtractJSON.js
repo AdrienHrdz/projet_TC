@@ -17,6 +17,16 @@ request.onload = function() {
 
 
 function foncAffichage(jsonObj) {
+    //Affichage joli à voir plus tard pour affichage des lignes
+    var myArticle = document.createElement('article');
+    var myPara1 = document.createElement('p');
+    //var myPara2 = document.createElement('p');
+    myPara1.textContent = 'Premier Point X: ';
+    //myPara2.textContent = 'Premier Point Y: ';
+    myArticle.appendChild(myPara1);
+    //myArticle.appendChild(myPara2);
+    section.appendChild(myArticle);
+
   let ListeRangement = [];
 
   for (var j = 0 ; j<Object.keys(jsonObj).length ;j++){
@@ -30,22 +40,6 @@ function foncAffichage(jsonObj) {
       ListeRangement.push(mur[0].Finish[0][i]);
     }
   
-
-    //Affichage joli à voir plus tard pour affichage des lignes
-    var myArticle = document.createElement('article');
-    var myPara1 = document.createElement('p');
-    var myPara2 = document.createElement('p');
-
-    myPara1.textContent = 'Premier Point X: ';
-    myPara2.textContent = 'Premier Point Y: ';
-    myPara1.textContent = 'Dernier Point X: ';
-    myPara2.textContent = 'Dernier Point Y: ' ;
-
-
-    myArticle.appendChild(myPara1);
-    myArticle.appendChild(myPara2);
-    section.appendChild(myArticle);
-
   }
 
   console.log(ListeRangement);
