@@ -62,3 +62,10 @@ function foncAffichage(jsonObj) {
   console.log(echelleMax);
   
 }
+
+window.onload = function() {
+  var canvas = document.querySelector('.map');
+
+  var ctx = canvas.getContext('2d')
+  
+}
