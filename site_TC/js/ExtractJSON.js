@@ -28,6 +28,8 @@ function foncAffichage(jsonObj) {
     section.appendChild(myArticle);
 
   let ListeRangement = [];
+  let ListeX = [];
+  let ListeY = [];
 
   for (var j = 0 ; j<Object.keys(jsonObj).length ;j++){
     var mur = jsonObj[String(j)];
@@ -39,27 +41,52 @@ function foncAffichage(jsonObj) {
       ListeRangement.push(mur[0].First[0][i]);
       ListeRangement.push(mur[0].Finish[0][i]);
     }
+
+    ListeX.push(mur[0].First[0][0]);
+    ListeX.push(mur[0].Finish[0][0]);
+    ListeY.push(mur[0].First[0][1]);
+    ListeY.push(mur[0].Finish[0][1]);
   
   }
 
-  console.log(ListeRangement);
+  console.log(ListeX);
   
+  //echelleMax represente le nombre le plus eleve de x et y
   if ((Math.max(...ListeRangement)-Math.abs(Math.min(...ListeRangement)))>0){
     var echelleMax = Math.max(...ListeRangement);
   }
-
   else {
     var echelleMax = Math.abs(Math.min(...ListeRangement));
   }
+  var echelleMin = Math.abs(Math.min(...ListeRangement));
+
+  Xmax=Math.max(...ListeX);
+  Xmin=Math.min(...ListeX);
+  Ymax=Math.max(...ListeY);
+  Ymin=Math.min(...ListeY);
+  AffichagePropre(ListeRangement,Xmax,Xmin,Ymax,Ymin);
 
 
-  console.log(echelleMax);
   
 }
 
-window.onload = function() {
+function AffichagePropre(ListeRangement,Xmax,Xmin,Ymax,Ymin) {
   var canvas = document.querySelector('.map');
-
   var ctx = canvas.getContext('2d')
+  ctx.strokeStyle='blue';
+
+  var multiX = 800; //Width canvas
+  var multiY = 800; //Height canvas
+  var MaxMinX = Xmax-Xmin;
+  var MaxMinY = Ymax-Ymin;
+  console.log($(".map").width());
+
+  for (var i=0; i<ListeRangement.length;i++){
+    ctx.beginPath();
+    ctx.moveTo(multiX*(ListeRangement[i]-Xmin)/MaxMinX, multiY*(Ymax-ListeRangement[i+2])/MaxMinY);
+    ctx.lineTo(multiX*(ListeRangement[i+1]-Xmin)/MaxMinX, multiY*(Ymax-ListeRangement[i+3])/MaxMinY);
+    ctx.stroke();
+    i=i+3;
+  }
   
 }
