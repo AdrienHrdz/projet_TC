@@ -27,15 +27,38 @@ def ConstructionJson (lines) :
     #print(int(len(lines)/2))
     dictio = {}
     for i in range(0,int(len(lines)/2)):
-        clef1="Mur"+str(i)+"First"
-        clef2="Mur"+str(i)+"Finish"
+        dicky ={}
 
-        dictio=AddValueToDict(clef1, dictio, lines[2*i].tolist(), list())
-        dictio=AddValueToDict(clef2, dictio, lines[2*i+1].tolist(), list())
+        clef0=str(i)
+        clef1="First"
+        clef2="Finish"
+        
+        dicky=AddValueToDict(clef1, dicky, lines[2*i].tolist(), list())
+        dicky=AddValueToDict(clef2, dicky, lines[2*i+1].tolist(), list())
+        dictio=AddValueToDict(clef0, dictio, dicky, list())
+
 
     with open('RecupLigne.json', 'w') as mon_fichier:
         json.dump(dictio, mon_fichier)
 
+lines=np.array([[ 0.11283354, 0.04369888],
+ [ 0.10184537  , 0.1813602 ],
+ [ 0.07624975 , 0.22122833],
+ [ 0.01508276  ,0.22248935],
+ [ 0.00498009  ,0.11989662],
+ [-0.01715755  ,0.11977737],
+ [-0.06576925  ,0.22248237],
+ [-0.0933768   ,0.22758904],
+ [-0.0990632  , 0.22735541],
+ [-0.13549654 , 0.23238263],
+ [-0.14552383 , 0.19084762],
+ [-0.14382285 , 0.034914  ],
+ [-0.14613511 ,-0.01592258],
+ [-0.15041535 ,-0.10597746],
+ [-0.1250683  ,-0.11366143],
+ [ 0.09079997 ,-0.12314368],
+ [ 0.08876227 ,-0.09634449],
+ [ 0.10063716 ,-0.06536178]])
 
-lines=np.array([[1,6], [3,6],[5,6],[7,6],[1,2],[3,4],[5,6],[7,8]])
+#lines=np.array([[1,6], [3,6],[5,6],[7,6],[1,6], [3,6],[5,6],[7,6]])
 ConstructionJson(lines)
