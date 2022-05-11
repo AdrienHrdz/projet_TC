@@ -50,11 +50,11 @@ def changeBase(A):
     return X, Y
 
 
-def createLines(X, Y, n):
+def createLines(X, Y):
     '''
     Crée les lignes à partir du nuage de point contenu dans X, Y et ne prend en compte que les lignes ayant au moins n points
     '''
-
+    n = 2
     k = 0
     d = 0.01        # Rayon max dans lequel se trouvent 2 points d'une même ligne
     
@@ -68,6 +68,7 @@ def createLines(X, Y, n):
         
     
         while(flag and k < len(X)-1) : 
+            #(Cx, Cy) = circle.circle(X[k], Y[k], d)
                 
             if((X[k+1] - X[k])**2 + (Y[k+1] - Y[k])**2 < d**2) :
                 line = np.append(line, [[ X[k+1], Y[k+1] ]], axis=0)
@@ -89,20 +90,7 @@ def createLines(X, Y, n):
 
     lines = np.delete(lines, 0, axis=0)
     return lines, coeffsDir
-
-
-#% for i = 2:2:len(lines)
-#%     for j = 2:2:len(lines)
-#%        if(i ~= j && abs(coeffsDir(i/2) - coeffsDir(j/2)) < gamma ...
-#%                && abs(lines(i, 1) - lines(j, 1)) < gamma && abs(lines(i, 2) - lines(j, 2)) < gamma)
-#%            lines(i,:) = []; 
-#%            lines(i+1,:) = [];
-#% 
-#%        else
-#%        end
-#%     end
-#%    
-#% end
+    
 
 def reshapeLines(lines, coeffsDir, gamma):
     '''
@@ -137,7 +125,9 @@ def printLines(lines):
     Affiche la carte sous forme de lignes
     '''
 
-    for i in range(int(len(lines)/2)):
+    for k in range(int(len(lines)/2)):
+        print(k)
+        print(lines[2*k, 0], lines[2*k+1, 0], lines[2*k, 1], lines[2*k+1, 1])
         plt.plot([ lines[2*i, 0], lines[2*i+1, 0] ], [ lines[2*i, 1], lines[2*i+1, 1] ])
 
     plt.draw()
@@ -145,6 +135,7 @@ def printLines(lines):
 
 
 ## Tests ##
+'''
 A = getData('Lidar_python/RPLIDAR.txt')
 
 X, Y = changeBase(A)
@@ -153,14 +144,3 @@ X, Y = changeBase(A)
 lines  = createLines(X, Y, 5)[0]
 coeffsDir = createLines(X, Y, 5)[1]
 linesReshape = reshapeLines(lines, coeffsDir, 0.07)
-
-plt.figure(1)
-printLines(lines)
-
-plt.figure(2)
-printLines(linesReshape)
-#plt.scatter(X, Y)
-#plt.draw()
-#plt.show()
-
-plt.show()
