@@ -2,7 +2,7 @@
 import paramiko
 
 
-server='192.168.169.212'
+server='192.168.97.212'
 usr='pi'
 psswd='raspberry'
 

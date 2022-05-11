@@ -30,7 +30,7 @@ def affichage_pwd():
 
 
 
-server='192.168.169.212'
+server='192.168.123.212'
 usr='pi'
 psswd='raspberry'
 
@@ -42,9 +42,11 @@ print('Connecté')
 
 
 ssh1,ssh2,ssh3 =avancer()
+
+'''
 time.sleep(10)
 ssh1,ssh2,ssh3 =tourneGauche()
 time.sleep(10)
 ssh1,ssh2,ssh3 =tourneDroite()
-
+'''
 
