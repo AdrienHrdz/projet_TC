@@ -57,7 +57,7 @@ function foncAffichage(jsonObj) {
   
 }
 
-window.onload = function() {
+function startDraw() {
   var canvas = document.querySelector('.map');
 
   var ctx = canvas.getContext('2d')
