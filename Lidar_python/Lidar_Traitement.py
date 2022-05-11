@@ -68,6 +68,7 @@ def createLines(X, Y, n):
         
     
         while(flag and k < len(X)-1) : 
+            #(Cx, Cy) = circle.circle(X[k], Y[k], d)
                 
             if((X[k+1] - X[k])**2 + (Y[k+1] - Y[k])**2 < d**2) :
                 line = np.append(line, [[ X[k+1], Y[k+1] ]], axis=0)
@@ -128,7 +129,6 @@ def printLines(lines):
         plt.plot([ lines[2*i, 0], lines[2*i+1, 0] ], [ lines[2*i, 1], lines[2*i+1, 1] ])
 
     plt.draw()
-    plt.show()
     
 
 
@@ -141,15 +141,11 @@ X, Y = changeBase(A)
 lines  = createLines(X, Y, 5)[0]
 coeffsDir = createLines(X, Y, 5)[1]
 linesReshape = reshapeLines(lines, coeffsDir, 0.07)
-
+print(lines)
 plt.figure(1)
 printLines(lines)
 
 plt.figure(2)
 printLines(linesReshape)
-
-plt.figure(3)
-plt.scatter(X, Y)
-plt.draw()
 
 plt.show()
