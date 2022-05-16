@@ -31,13 +31,6 @@ button{
 }
 
 .map {
-    margin-top: 2%;
-    
-}
-
-.containerMap{
-    background-color: rgb(228, 135, 48);
-    margin-top: 2%;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-top: 5%;
+   background-color: grey;
 }
