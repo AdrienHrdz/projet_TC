@@ -2,6 +2,7 @@
 var header = document.querySelector("header");
 var section = document.querySelector("section");
 //var section = document.querySelector("map");
+
 //lien du json
 var requestURL = "../../RecupLigne.json"; //peut mettre un lien github : 'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json';
 //ATTENTION a l'endroit ou on enregistre le json
@@ -17,15 +18,6 @@ request.onload = function() {
 
 
 function foncAffichage(jsonObj) {
-    //Affichage joli à voir plus tard pour affichage des lignes
-    var myArticle = document.createElement('article');
-    var myPara1 = document.createElement('p');
-    //var myPara2 = document.createElement('p');
-    myPara1.textContent = 'Premier Point X: ';
-    //myPara2.textContent = 'Premier Point Y: ';
-    myArticle.appendChild(myPara1);
-    //myArticle.appendChild(myPara2);
-    section.appendChild(myArticle);
 
   let ListeRangement = [];
   let ListeX = [];
@@ -64,6 +56,7 @@ function foncAffichage(jsonObj) {
   Xmin=Math.min(...ListeX);
   Ymax=Math.max(...ListeY);
   Ymin=Math.min(...ListeY);
+
   AffichagePropre(ListeRangement,Xmax,Xmin,Ymax,Ymin);
 
 
@@ -73,13 +66,13 @@ function foncAffichage(jsonObj) {
 function AffichagePropre(ListeRangement,Xmax,Xmin,Ymax,Ymin) {
   var canvas = document.querySelector('.map');
   var ctx = canvas.getContext('2d')
-  ctx.strokeStyle='blue';
+  //ctx.strokeStyle='white';
 
-  var multiX = 800; //Width canvas
-  var multiY = 800; //Height canvas
+  console.log($(".map").height());
+  var multiX = $(".map").width(); //Width canvas
+  var multiY = $(".map").height(); //Height canvas
   var MaxMinX = Xmax-Xmin;
   var MaxMinY = Ymax-Ymin;
-  console.log($(".map").width());
 
   for (var i=0; i<ListeRangement.length;i++){
     ctx.beginPath();
