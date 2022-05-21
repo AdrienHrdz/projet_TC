@@ -4,18 +4,21 @@
     margin-top: 20px;
     margin-left: 150px;
     background-color: #f0f0f0;
-    
-}
-
-.list_legend{
-    text-align: left;
-    columns: 200px;
-    background-color: #f0f0f0;
+    margin-bottom: 3%;
 }
 
 .center{
     text-align: center;
 }
+
+button{
+    background-color: rgb(228, 135, 48);
+    color: black;
+    text-align: right;
+    padding: 10px 16px;
+    text-decoration: none;
+}
+
 
 .element1 ::before{
     color: #e92424
@@ -24,8 +27,15 @@
 .container {
     margin-bottom: 20%;
     margin-top: 10%;
+    background-color: grey;
 }
 
+.containerMap {
+    margin-left: 20%;
+    background-color: grey;
+    margin-right: 20%;
+    margin-top: 1%;
+}
 .map {
     margin-top: 5%;
    background-color: grey;

@@ -12,27 +12,27 @@
     <header></header>
    
     <div id="container">
-        <canvas class="map" width = "800" height = "800"></canvas>
+        <div class="containerMap">
+            <canvas class="map" width = "700" height = "400"></canvas>
+        </div>
+        
 
         <section class="legend">
             <div class="center">
-                <h2> Légende </h2>
+                <h2> Rafraîchissement </h2>
+            </div>
+            <div class="belowCenter">
+                <button id="bouton_refresh" onclick="window.location.reload()">Refresh</button>
             </div>
             
-            <ul class="list_legend">
-                <li class="element1">Obstacle</li>
-                <li>Persone blessée</li>
-                <li>Point de feu</li>
-                <li>Cercle de vision</li>
-                <li>Zone non déterminée</li>
-            </ul>
-
         </section>
+
         <footer></footer>
     </div>
     
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <script type="text/javascript" src="../js/ExtractJSON.js"></script>
     <script type="text/javascript" src="../js/main.js"></script>
-    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    
 </body>
 </html>
