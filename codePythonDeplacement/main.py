@@ -1,9 +1,9 @@
-
 import paramiko
 import time
 
 # adresse ip à modifier selon le serveur
-server='192.168.97.212'
+#server='192.168.123.212'
+server='192.168.232.212'
 usr='pi'
 psswd='raspberry'
 
@@ -56,6 +56,10 @@ def lancementCollecteDonnees(ssh_client):
     
     return ssh_stdin, ssh_stdout, ssh_stderr
 
+def lancementLidar(ssh_client):
+    ssh_stdin, ssh_stdout, ssh_stderr = ssh_client.exec_command('cd /home/pi/Documents/PTC/Lidar_Python && sudo python3 getData.py')
+
+    return ssh_stdin, ssh_stdout, ssh_stderr
 
 ## Ouverture du client SSH ##
 ssh_client = OpenConnection(server, usr, psswd)
@@ -64,9 +68,15 @@ ssh_client = OpenConnection(server, usr, psswd)
 ssh_stdin, ssh_stdout, ssh_stderr = lancementCollecteDonnees(ssh_client)
 time.sleep(2)
 
+## Lancer la collecte de data  ## 
+ssh_stdin, ssh_stdout, ssh_stderr = lancementLidar(ssh_client)
+time.sleep(20)
+
+
 ## Boucle infinie ##
 condition = True
 while condition:
+    time.sleep(4)
     ## Lecture du fichier distant ##
     sftp_client = ssh_client.open_sftp()
     remote_file = sftp_client.open(remote_filename)
@@ -78,17 +88,19 @@ while condition:
         sftp_client.close()
     
     ## Traitement du déplacement ##
-    
-    if etat == 0:
+    print(etat)
+    if etat == 1:
         # Pas d'obstacle, on avance
-        ssh_stdin, ssh_stdout, ssh_stderr = avancer(ssh_client)
-        time.sleep(7)
+        #ssh_stdin, ssh_stdout, ssh_stderr = avancer(ssh_client)
+        # time.sleep(4)
+        pass
         
 
-    elif etat == 1:
+    elif etat == 0:
         # Obstacle, on fait gaffe
-        ssh_stdin, ssh_stdout, ssh_stderr = tourneDroite(ssh_client)
-        time.sleep(7)
+        #ssh_stdin, ssh_stdout, ssh_stderr = stop(ssh_client)
+        #time.sleep(4)
+        pass
 
     else:
         condition = True

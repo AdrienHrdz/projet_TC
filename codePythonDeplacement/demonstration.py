@@ -49,4 +49,3 @@ ssh1,ssh2,ssh3 =tourneGauche()
 time.sleep(10)
 ssh1,ssh2,ssh3 =tourneDroite()
 '''
-
