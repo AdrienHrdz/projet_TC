@@ -30,6 +30,12 @@ def ResetConnection(ssh_client):
 
     return ssh_client
 
+def OpenServer(ssh_client):
+    #Ouverture du serveur pour le transfert de fichier
+    ssh_stdin, ssh_stdout, ssh_stderr = ssh_client.exec_command('python3 -m http.server 8080')
+
+    return ssh_stdin, ssh_stdout, ssh_stderr
+
 ## Fonctions pour le robot ##
 def avancer(ssh_client):
     ssh_stdin, ssh_stdout, ssh_stderr = ssh_client.exec_command('cd /home/pi/Documents/PTC/configGPIO && python3 avancer.py')
@@ -66,11 +72,15 @@ ssh_client = OpenConnection(server, usr, psswd)
 
 ## Lancement de la collecte de données ##
 ssh_stdin, ssh_stdout, ssh_stderr = lancementCollecteDonnees(ssh_client)
-time.sleep(2)
+time.sleep(3)
+
+## Ouverture du serveur pour le transfert de fichier ##
+ssh_stdin, ssh_stdout, ssh_stderr = OpenServer(ssh_client)
+time.sleep(3)
 
 ## Lancer la collecte de data  ## 
 ssh_stdin, ssh_stdout, ssh_stderr = lancementLidar(ssh_client)
-time.sleep(20)
+time.sleep(3)
 
 
 ## Boucle infinie ##
@@ -83,6 +93,9 @@ while condition:
     try:
         for line in remote_file:
             etat = int(line.strip())
+    except:
+        print("Erreur de lecture du fichier distant")
+        etat = 2
     finally:
         remote_file.close()
         sftp_client.close()
@@ -102,9 +115,19 @@ while condition:
         #time.sleep(4)
         pass
 
-    else:
-        condition = True
+    elif etat == 2:
+        # Erreur de lecture du fichier distant : on relance les processus
         ssh_client = ResetConnection(ssh_client)
+        ssh_stdin, ssh_stdout, ssh_stderr = lancementCollecteDonnees(ssh_client)
+        time.sleep(4)
+        ssh_stdin, ssh_stdout, ssh_stderr = lancementLidar(ssh_client)
+        time.sleep(4)
+        pass
+
+    else:
+        print("Fin programme")
+        condition = False
+        
         
 
 
