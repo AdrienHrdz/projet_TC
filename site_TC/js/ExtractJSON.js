@@ -6,16 +6,7 @@ var section = document.querySelector("section");
 //lien du json
 var requestURL = "../../RecupLigne.json"; //peut mettre un lien github : 'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json';
 //ATTENTION a l'endroit ou on enregistre le json
-
-var request = new XMLHttpRequest();
-request.open('GET', requestURL);
-request.responseType = 'json';
-request.send();
-request.onload = function() {
-    var repRequete = request.response;
-    foncAffichage(repRequete);
-}
-
+var flag = false;
 
 function foncAffichage(jsonObj) {
 
@@ -82,4 +73,37 @@ function AffichagePropre(ListeRangement,Xmax,Xmin,Ymax,Ymin) {
     i=i+3;
   }
   
+}
+
+function requete(){
+  //flag = !flag;
+  
+  //for (let i = 0; i < 9; i++){
+  var request = new XMLHttpRequest();
+  request.open('GET', requestURL);
+  request.responseType = 'json';
+  request.send();
+  request.onload = function() {
+    var repRequete = request.response;
+    foncAffichage(repRequete);
+    //}
+  //sleep(1000)
+  }
+}
+
+function automatisation(){
+  flag != flag;
+  while(flag){
+    requete();
+    sleep(2000);
+  }
+  
+}
+
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
 }

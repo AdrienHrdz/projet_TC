@@ -4,7 +4,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from math import cos,sin,pi
 import circle 
-
+from urllib.request import urlretrieve
+import time
 ## Définition des fonctions ##
 
 def getData(filePath):
@@ -43,8 +44,8 @@ def changeBase(A):
     for (dist,angle) in zip(A[0,:],A[1,:]) :
         dist_i=float(dist)
         angle_i=float(angle)
-        b1=angle_i*cos(dist_i*pi/180)/1000
-        b2=angle_i*sin(dist_i*pi/180)/1000
+        b1=angle_i*cos(dist_i*pi/180+pi/2)/1000
+        b2=angle_i*sin(dist_i*pi/180+pi/2)/1000
         X=np.append(X, b1)
         Y=np.append(Y, b2)
 
@@ -144,11 +145,13 @@ X, Y = changeBase(A)
 
 lines  = createLines(X, Y)[0]
 coeffsDir = createLines(X, Y)[1]
-linesReshape = reshapeLines(lines, coeffsDir, 0.07)
+linesReshape = reshapeLines(lines, coeffsDir, 0.02)
 
-plt.scatter([0, 0.3, 0.7], [1, 1.3, 1.7])
+printLines(lines)
 
-(Cx, Cy) = circle.circle([0, 0.3, 0.7], [1, 1.3, 1.7], 0.5)
-plt.plot(Cx, Cy)
-plt.draw()
-plt.show()
+'''
+while True:
+    urlretrieve('htpp://192.168.1.100:8080/PTC/Lidar_Python/RecupLigne.json')
+    time.sleep(2)
+'''
+# scp -r /home/pi/Documents/PTC/Lidar_Python/RecupLigne.json corto@10.160.0.245:/home/corto/Documents/projet_TC/projet_TC/Recupligne.json
