@@ -33,15 +33,6 @@ function foncAffichage(jsonObj) {
   }
 
   console.log(ListeX);
-  
-  //echelleMax represente le nombre le plus eleve de x et y
-  if ((Math.max(...ListeRangement)-Math.abs(Math.min(...ListeRangement)))>0){
-    var echelleMax = Math.max(...ListeRangement);
-  }
-  else {
-    var echelleMax = Math.abs(Math.min(...ListeRangement));
-  }
-  var echelleMin = Math.abs(Math.min(...ListeRangement));
 
   Xmax=Math.max(...ListeX);
   Xmin=Math.min(...ListeX);
@@ -49,8 +40,6 @@ function foncAffichage(jsonObj) {
   Ymin=Math.min(...ListeY);
 
   AffichagePropre(ListeRangement,Xmax,Xmin,Ymax,Ymin);
-
-
   
 }
 
