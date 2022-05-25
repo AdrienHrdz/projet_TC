@@ -76,9 +76,7 @@ function AffichagePropre(ListeRangement,Xmax,Xmin,Ymax,Ymin) {
 }
 
 function requete(){
-  //flag = !flag;
-  
-  //for (let i = 0; i < 9; i++){
+  console.log("UwU");
   var request = new XMLHttpRequest();
   request.open('GET', requestURL);
   request.responseType = 'json';
@@ -86,19 +84,13 @@ function requete(){
   request.onload = function() {
     var repRequete = request.response;
     foncAffichage(repRequete);
-    //}
-  //sleep(1000)
   }
 }
 
 function automatisation(){
-  flag != flag;
-  while(flag){
-    requete();
-    sleep(2000);
-  }
-  
+  x = setInterval(function() {requete(); }, 2000);
 }
+  
 
 function sleep(milliseconds) {
   const date = Date.now();
