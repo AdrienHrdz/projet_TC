@@ -134,7 +134,7 @@ def printLines(lines):
     plt.draw()
     plt.show()
     
-
+"""
 
 ## Tests ##
 
@@ -148,10 +148,10 @@ coeffsDir = createLines(X, Y)[1]
 linesReshape = reshapeLines(lines, coeffsDir, 0.02)
 
 printLines(lines)
+"""
 
-'''
 while True:
-    urlretrieve('htpp://192.168.1.100:8080/PTC/Lidar_Python/RecupLigne.json')
+    urlretrieve('http://192.168.123.212:8080/Documents/PTC/Lidar_Python/RecupLigne.json', 'RecupLigne.json')
     time.sleep(2)
-'''
+
 # scp -r /home/pi/Documents/PTC/Lidar_Python/RecupLigne.json corto@10.160.0.245:/home/corto/Documents/projet_TC/projet_TC/Recupligne.json
